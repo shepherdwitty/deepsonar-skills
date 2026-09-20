@@ -80,12 +80,20 @@ python3 scripts/call_lacing_model.py --provider gemini --model gemini-2.5-flash 
   -o work/lacing_result.json
 ```
 
-#### 1-C 极限兜底：纯文本模型无 API Key 回退管线
-仅当 Agent 为纯文本模型且无任何云端 API Key 时，方可运行：
-```bash
-python3 scripts/extract_frames.py <视频路径> -o work/frames
-```
-注意：回退模式输出必须人工复核镜头数与时间戳准确性。
+#### 1-C 极限兜底：纯文本模型 / 无云端 Key 回退管线（如 DeepSeek、Workbody 等）
+当 Agent 为纯文本模型且无任何多模态 API Key 时，**严格遵守 `references/fallback_sop.md` 时序最优流水线**：
+1. **秒级抽帧与导音（双引擎）**：
+   ```bash
+   # 系统有 ffmpeg 则调 ffmpeg；无 ffmpeg 自动平滑降级为纯 Python PyAV 引擎，免装 brew
+   python3 scripts/extract_frames.py <视频路径> -o work/frames
+   ```
+2. **音画解耦，并行推进（切禁串行傻等）**：
+   - **后台立即挂起 ASR**：`python3 scripts/run_asr_fallback.py work/frames/audio.wav -o work/asr_raw.json --model medium`（必须走 medium 档防“痘”变“斗”，国内镜像防卡死）；
+   - **前台同时核读画面**：通览 1s 均匀帧确认有无字幕、0.5s 网格拼图敲定 18~25 镜边界，定向取帧 3x 放大 + 90° 旋转核读包装与报告水印；
+3. **两级纠错闭环**：
+   - 存疑片段截取切片，塞入领域词用 `run_asr_fallback.py --slice --prompt` 偏置重听；
+   - **画面实物文字优先于听觉**：以包装备案名和质检报告反向校准口播品名（杜绝音近幻觉与漏判私改品名）；
+4. 输出 JSON 显式标注 `"model_used": {"mode": "fallback"}`。
 
 ---
 
@@ -148,9 +156,11 @@ python3 scripts/extract_frames.py <视频路径> -o work/frames
 - `scripts/render_report.py` — 单文件离线 HTML 风控报告渲染器（声纳显控台主题）
 - `scripts/call_lacing_model.py` — 独立自动化脚本直连云端多模态 API（CI/CD 或无 Agent 场景）
 - `scripts/mcp_call.py` — 极限受限沙箱环境下的应急 HTTP 直连兜底
-- `scripts/extract_frames.py` — 极限纯文本环境下的回退抽帧兜底
+- `scripts/extract_frames.py` — 纯文本/受限环境下的免 ffmpeg 双引擎抽帧与音频导出工具（系统 ffmpeg 优先 + 纯 Python PyAV 自动降级）
+- `scripts/run_asr_fallback.py` — 纯文本/受限环境下的离线 ASR 与定向切片纠错工具（faster-whisper medium 基准 + 偏置重听）
 - `references/mcp_setup.md` — MCP 安装与配置指南（一键安装与多端配置）
 - `references/model_priority.md` — 模型自省与全模态视频输入规范
+- `references/fallback_sop.md` — 纯文本/受限环境下的抽帧+ASR兜底完整实战规程（10 大避坑红线与音画互证闭环）
 - `references/mcp_integration.md` — 原生 Tool Call 交互归因规程
 - `references/lacing_prompt.md` — 标准拉片 Prompt 与输出 JSON Schema
 - `references/report_schema.md` — 报告输入 Schema 契约与五维评分公式

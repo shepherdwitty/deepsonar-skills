@@ -11,7 +11,7 @@ DeepSonar（深纳）是面向电商平台（当前落地抖音电商）的专�
 
 | 技能名称 | 核心定位 | 核心能力 | 支持客户端 |
 | :--- | :--- | :--- | :--- |
-| [`video-deepsonar`](skills/video-deepsonar/) | **短视频「拉片 + 风控归因」一体化** | • **全模态端到端直出拉片**（1~2秒级微视觉切镜，告别机械抽帧与ASR拼接脱节）<br>• **DeepSonar 原生 MCP 交互归因**（孤证不立全文核验、平台开放闸门）<br>• **单文件离线 HTML 显控台报告**（深海声纳主题、全分镜三阶自适应高亮、合规改写口播稿） | Antigravity, Claude Code, Cursor, Gemini CLI |
+| [`video-deepsonar`](skills/video-deepsonar/) | **短视频「拉片 + 风控归因」一体化** | • **全模态端到端直出拉片**（1~2秒级微视觉切镜，告别机械抽帧与ASR拼接脱节）<br>• **受限/纯文本 Agent 极限回退保障**（免 ffmpeg 双引擎抽帧、faster-whisper medium 离线 ASR、偏置纠错与音画互证 SOP，无缝兼容 Workbody/DeepSeek 等国产 Agent）<br>• **DeepSonar 原生 MCP 交互归因**（孤证不立全文核验、平台开放闸门）<br>• **单文件离线 HTML 显控台报告**（深海声纳主题、全分镜三阶自适应高亮、合规改写口播稿） | Antigravity, Claude Code, Cursor, Gemini CLI, Workbody |
 
 *更多电商风控场景技能（直播切片预审、商品标题合规诊断、图文挂车排查等）正在持续同步中……*
 

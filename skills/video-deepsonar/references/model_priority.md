@@ -74,12 +74,29 @@ python3 scripts/call_lacing_model.py \
 ## 四、第 3 优先级：极限回退模式（最后防线）
 
 当且仅当满足以下**全部**条件：
-1. Agent 自省判定自身**完全不具备**多模态能力（纯文本模型）；
+1. Agent 自省判定自身**完全不具备**多模态能力（纯文本模型，如 DeepSeek、Workbody、无图/无音模型）；
 2. 宿主环境变量中**没有任何**云端多模态 API Key；
 3. 用户明确要求必须就地完成拉片。
 
-此时方可运行：
+此时必须严格遵循 [`references/fallback_sop.md`](fallback_sop.md) 实战规范：
+
+### 1. 核心原则：音画并行与双引擎免环境依赖
+- 抽帧与音频分离必须**一步到位**（单次遍历视频流同时导出关键帧与 16kHz WAV 音频）；
+- 优先调用系统 `ffmpeg`，若系统无 ffmpeg/brew，自动无缝降级为纯 Python `PyAV`（无需安装任何系统级依赖）；
+- ASR 必须以 `faster-whisper` 的 `medium` 档位为基准，Mac 平台强制 `cpu` + `int8` 量化，严禁使用识别率低下的小模型或受 macOS TCC 权限强杀的 Apple 原生 Speech。
+
+### 2. 标准流水线
 ```bash
-python3 scripts/extract_frames.py <视频路径> -o work/frames
+# 1. 依赖就绪（如缺失依赖）
+pip install av pillow numpy faster-whisper
+
+# 2. 双引擎抽帧与音频提取（零系统 ffmpeg 依赖，同时产出 frames/ 与 frames/audio.wav）
+python3 scripts/extract_frames.py <视频路径> -o work/frames --rate 1.0
+
+# 3. 离线 ASR 全文转录（自动加载 medium 档与 HF 国内镜像）
+python3 scripts/run_asr_fallback.py work/frames/audio.wav -o work/asr_transcript.json
+
+# 4. 音画对齐、OCR 锁定与偏置重听纠错（详见 references/fallback_sop.md）
 ```
-注意：回退模式下的分镜表与时间戳必须经过严格自查，并在 `model_used.mode` 中标注为 `fallback`。
+
+> ⚠️ **深度参考**：务必查阅 [`references/fallback_sop.md`](fallback_sop.md) 中关于**10 大避坑红线**（如手持切点虚警、浮雕字局部 3x 放大、HF 镜像注入、两级偏置纠错与音画互证等）。
