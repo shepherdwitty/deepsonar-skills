@@ -16,7 +16,7 @@
        ▼
 【第 1 优先级：Agent 模型能力自省 (Self-Inspection)】
    当前 Agent 是否为具备音视频理解的全模态模型？
-   （包括但不限于 Gemini 全系: Gemini 1.5/2.0/3.x Flash/Pro、Claude 3.5 Sonnet 多模态、GPT-4o 等）
+   （包括但不限于 Gemini 3.x 全系: Gemini 3.8 Flash、Gemini 3.5 Pro、Claude 3.5 Sonnet 多模态、GPT-4o 等）
        ├─ 是 ──► 【原生视频直出模式】直接将 MP4 输入 Agent 自身模型，端到端直出拉片 JSON
        │
        └─ 否（纯代码/纯文本 Agent）
@@ -39,7 +39,7 @@
 
 ## 二、第 1 优先级详解：Gemini 全系原生视频直出
 
-当宿主 Agent 运行在 Gemini 3.8 Flash、Gemini 2.5 Pro、Gemini 1.5 Pro/Flash 或同等全模态模型时：
+当宿主 Agent 运行在 Gemini 3.8 Flash、Gemini 3.5 Pro 或同等全模态模型时：
 
 ### 1. 为什么必须使用原生视频输入？
 - 🎬 **真·时序视觉剪辑切分（Visual Cut First）**：模型依据视听语言逻辑感知画面真实物理切镜（机位变换、景别推进、微距特写、主体动作突变）。**绝对禁止按口播台词断句合并镜头**，一句台词跨越多个动作时（如固定刘海发夹瞬切为旋转笔尾出液特写），必须精准切为独立镜头（切片密度达 1~2 秒级，标准电商短视频通常产出约 21 镜）；
@@ -61,13 +61,13 @@
 ```bash
 # Gemini File API 直连
 python3 scripts/call_lacing_model.py \
-  --provider gemini --model gemini-2.5-flash \
+  --provider gemini --model gemini-3.8-flash \
   --video <视频路径> --prompt-file references/lacing_prompt.md \
   -o work/lacing_result.json
 ```
 
 质量档参考链：
-`Gemini 2.5 Flash / Qwen 3.8 Omni Flash > Doubao Seed 2.0 Lite > Gemini 3.5 Flash Lite`
+`Gemini 3.8 Flash / Qwen 3.8 OmniFlash > Doubao Seed 2.0 Lite > Gemini 3.5 Flash Lite`
 
 ---
 

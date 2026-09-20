@@ -64,7 +64,7 @@ metadata:
 拉片 prompt 与输出 JSON schema 的唯一真源是 `references/lacing_prompt.md`。字段名不得改写、不得增删字段。
 
 #### 1-A 首选：Agent 原生全模态直出（Gemini 全系 / 多模态模型）
-- **自省判断**：若当前 Agent 模型为 Gemini 全系（如 Gemini 3.8 Flash、Gemini 2.5 Pro 等）或具备长视频理解能力：
+- **自省判断**：若当前 Agent 模型为 Gemini 3.x 全系（如 Gemini 3.8 Flash、Gemini 3.5 Pro 等）或具备原生视频理解能力：
 - **执行**：
   1. 直接以原始视频文件（MP4/MOV）输入 Agent 自身；
   2. 严格携带最新版 `references/lacing_prompt.md`（时序优先版）作为 Instruction；
