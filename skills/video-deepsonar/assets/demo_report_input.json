@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "title": "某护肤品牌祛痘精华带货视频风控报告",
+    "video_source": "抖音链接 https://v.douyin.com/demo/",
+    "platform": "douyin",
+    "duration_sec": 46.2,
+    "shot_count": 21,
+    "generated_at": "2026-09-20 15:04",
+    "model_used": "qwen3-omni-flash (direct)",
+    "deepsonar_rules_cited": 3
+  },
+  "overall": {
+    "score": 59,
+    "risk_level": "high",
+    "summary": "依据：口播含「全网最低价」「效果第一」绝对化用语，且检测报告带「内部文件·仅供资质审核」水印公开露出。约束：祛痘类功效宣称须有人体功效评价报告并按规定公开摘要。行动：完成 2 项高风险整改、核验检测报告原件与备案名称后再投放。",
+    "decision": "暂缓投放"
+  },
+  "dimensions": [
+    {
+      "key": "speech",
+      "label": "口播合规",
+      "score": 50,
+      "note": "命中 2 处绝对化用语（high×2）"
+    },
+    {
+      "key": "onscreen",
+      "label": "画面文字",
+      "score": 90,
+      "note": "包装宣称 1 处疑似（low）"
+    },
+    {
+      "key": "extreme_words",
+      "label": "极限词密度",
+      "score": 50,
+      "note": "最低/第一 各 1 处"
+    },
+    {
+      "key": "price_promo",
+      "label": "价格促销",
+      "score": 75,
+      "note": "全网最低价 1 处（high）"
+    },
+    {
+      "key": "evidence",
+      "label": "资质证据",
+      "score": 60,
+      "note": "“检测报告认证”无对应画面镜头（medium×2）"
+    }
+  ],
+  "timeline": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "level": "safe",
+      "label": "镜头1"
+    },
+    {
+      "start": 3.0,
+      "end": 7.0,
+      "level": "high",
+      "label": "镜头2-3"
+    },
+    {
+      "start": 7.0,
+      "end": 15.0,
+      "level": "safe",
+      "label": "镜头4-8"
+    },
+    {
+      "start": 15.0,
+      "end": 19.0,
+      "level": "medium",
+      "label": "镜头9-10"
+    },
+    {
+      "start": 19.0,
+      "end": 34.0,
+      "level": "safe",
+      "label": "镜头11-17"
+    },
+    {
+      "start": 34.0,
+      "end": 38.5,
+      "level": "high",
+      "label": "镜头18-19"
+    },
+    {
+      "start": 38.5,
+      "end": 46.2,
+      "level": "safe",
+      "label": "镜头20-21"
+    }
+  ],
+  "findings": [
+    {
+      "time_range": "00:03–00:07",
+      "severity": "high",
+      "category": "价格宣传",
+      "excerpt": "今天直播间全网最低价，错过再等一年",
+      "source": "口播",
+      "clauses": [
+        {
+          "rule_name": "抖音电商价格宣传规范",
+          "rule_url": "https://school.jinritemai.com/doudian/web/article/demo",
+          "clause_text": "创作者不得使用“最低价”“全网最低”等无法证实的价格比较表述进行宣传。",
+          "penalty": "违规一次扣除信用分 2 分，情节严重关闭商品分享功能"
+        }
+      ],
+      "suggestion": "改为“今天直播间到手价 199 元，比日常价便宜 40 元”等可证实的具体表述。",
+      "verified": true,
+      "rewrite": "「今天直播间到手价 199 元，比日常价便宜 40 元，活动仅限今天」"
+    },
+    {
+      "time_range": "00:34–00:38",
+      "severity": "high",
+      "category": "极限词",
+      "excerpt": "这是祛痘效果第一的精华，三天必消痘",
+      "source": "口播",
+      "clauses": [
+        {
+          "rule_name": "抖音社区自律公约·绝对化用语",
+          "rule_url": "https://www.douyin.com/rule/demo",
+          "clause_text": "禁止使用“第一”“最强”等绝对化用语及对化妆品功效做确定性断言。",
+          "penalty": "视频限流，账号警告"
+        }
+      ],
+      "suggestion": "删除“第一”“必消痘”，改为“帮助改善痘痘肌”，并在画面展示真实使用周期。",
+      "verified": true,
+      "rewrite": "「这套祛痘精华帮助改善痘痘肌，坚持使用能看到变化」"
+    },
+    {
+      "time_range": "00:15–00:19",
+      "severity": "medium",
+      "category": "资质缺失",
+      "excerpt": "有权威检测报告认证，敏感肌放心用",
+      "source": "口播",
+      "clauses": [
+        {
+          "rule_name": "抖音电商化妆品宣传规范",
+          "rule_url": "https://school.jinritemai.com/doudian/web/article/demo2",
+          "clause_text": "宣传检测报告、认证资质的，需在视频中展示对应证明材料或在商品详情页公示。",
+          "penalty": "商品下架整改"
+        }
+      ],
+      "suggestion": "补拍检测报告特写镜头（1~2 秒），或删除该宣称。",
+      "verified": false
+    }
+  ],
+  "fixes": [
+    "将“全网最低价”替换为可证实的具体价格对比表述",
+    "删除“效果第一”“三天必消痘”等绝对化与确定性功效用语",
+    "补拍检测报告/备案编号特写镜头，或删除“检测报告认证”宣称",
+    "重新走一遍本 skill 复测，确认整体安全分 ≥ 85 再发布"
+  ],
+  "transcript": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": "姐妹们，今天这支祛痘精华我真的要吹爆"
+    },
+    {
+      "start": 3.0,
+      "end": 7.0,
+      "text": "今天直播间全网最低价，错过再等一年"
+    },
+    {
+      "start": 7.0,
+      "end": 12.0,
+      "text": "它的核心成分是包裹水杨酸，温和不刺激"
+    },
+    {
+      "start": 15.0,
+      "end": 19.0,
+      "text": "有权威检测报告认证，敏感肌放心用"
+    },
+    {
+      "start": 34.0,
+      "end": 38.5,
+      "text": "这是祛痘效果第一的精华，三天必消痘"
+    },
+    {
+      "start": 38.5,
+      "end": 43.0,
+      "text": "库存不多了，点下方小黄车赶紧拍"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "item": "谱尼测试人体功效报告编号 IUEXFPHC5864427R7（引用页 第14页/共61页，8h -35.90% / 7d -76.92%）需核验原件与公开口径",
+      "owner": "法规 / 产品",
+      "method": "核对报告原件与药监局公开平台"
+    },
+    {
+      "item": "宣传名「优研达净痘套组」与包装备案名称一致性核对",
+      "owner": "法规 / 产品",
+      "method": "核对备案凭证与标签样稿"
+    },
+    {
+      "item": "检测报告画面水印版本确认：若为「仅供资质审核」版本需替换公开版或取得授权",
+      "owner": "品牌方",
+      "method": "与谱尼测试确认使用范围"
+    }
+  ],
+  "rewritten_script": {
+    "text": "姐妹们，今天这套祛痘精华我真的要吹爆。今天直播间到手价 199 元，比日常价便宜 40 元，活动仅限今天。它的核心成分是包裹水杨酸，温和不刺激。有第三方人体功效检测报告（编号 IUEXFPHC5864427R7），用着放心。这套祛痘精华帮助改善痘痘肌，坚持使用能看到变化。库存不多了，点下方小黄车赶紧拍。",
+    "notes": "核心修改点：「全网最低价→到手价 199 元/比日常价便宜 40 元（可证实价格表述）」「效果第一的精华三天必消痘→帮助改善痘痘肌坚持使用（去绝对化+去确定性断言）」「检测报告认证→补出处编号 IUEXFPHC5864427R7」"
+  }
+}
