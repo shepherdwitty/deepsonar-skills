@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """DeepSonar MCP 直连工具（无 MCP 客户端环境的标准化回退通道）。
 
-通过 Streamable HTTP 直接调用 api.deepsonar.help 的 MCP 工具，避免 agent
+通过 Streamable HTTP 直接调用 dsapi.solohub.art 的 MCP 工具，避免 agent
 自行拼装协议细节。鉴权读环境变量 DEEPSONAR_API_KEY（dk_ 前缀）。
 
 用法：
@@ -22,7 +22,7 @@ import sys
 import urllib.error
 import urllib.request
 
-ENDPOINT = "https://api.deepsonar.help/api/mcp"
+ENDPOINT = "https://dsapi.solohub.art/api/mcp"
 
 HEADERS_BASE = {
     "Content-Type": "application/json",
@@ -81,7 +81,7 @@ def main() -> int:
     if not api_key:
         print(json.dumps({
             "error": "缺少 DEEPSONAR_API_KEY 环境变量",
-            "hint": "密钥在管理工作台 console.deepsonar.help 的 API Keys 模块签发（dk_ 前缀）",
+            "hint": "密钥在管理工作台 dsc.solohub.art 的 API Keys 模块签发（dk_ 前缀）",
         }, ensure_ascii=False))
         return 3
 

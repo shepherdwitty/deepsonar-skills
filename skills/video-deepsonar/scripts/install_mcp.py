@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """DeepSonar MCP 一键安装器（纯原生 HTTP MCP 架构）。
 
-直接将 DeepSonar 的原生 HTTP MCP 端点（https://api.deepsonar.help/api/mcp）
+直接将 DeepSonar 的原生 HTTP MCP 端点（https://dsapi.solohub.art/api/mcp）
 及 Authorization Bearer Key 写入宿主环境配置（Antigravity / Claude Code / Cursor），
 彻底杜绝任何本地中间代理脚本，端到端直连。
 
@@ -19,7 +19,7 @@ import shutil
 import subprocess
 import sys
 
-MCP_ENDPOINT = "https://api.deepsonar.help/api/mcp"
+MCP_ENDPOINT = "https://dsapi.solohub.art/api/mcp"
 
 
 def update_json_config(path: str, server_config: dict) -> bool:

@@ -51,8 +51,8 @@ python3 scripts/install_mcp.py
   "mcpServers": {
     "deepsonar": {
       "type": "http",
-      "url": "https://api.deepsonar.help/api/mcp",
-      "serverUrl": "https://api.deepsonar.help/api/mcp",
+      "url": "https://dsapi.solohub.art/api/mcp",
+      "serverUrl": "https://dsapi.solohub.art/api/mcp",
       "headers": {
         "Authorization": "Bearer dk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       }
@@ -65,7 +65,7 @@ python3 scripts/install_mcp.py
 运行 Claude 官方 MCP 注册命令（直接支持 Streamable HTTP 传输）：
 
 ```bash
-claude mcp add --transport http deepsonar https://api.deepsonar.help/api/mcp \
+claude mcp add --transport http deepsonar https://dsapi.solohub.art/api/mcp \
   --header "Authorization: Bearer dk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
@@ -77,7 +77,7 @@ claude mcp add --transport http deepsonar https://api.deepsonar.help/api/mcp \
   "mcpServers": {
     "deepsonar": {
       "type": "http",
-      "url": "https://api.deepsonar.help/api/mcp",
+      "url": "https://dsapi.solohub.art/api/mcp",
       "headers": {
         "Authorization": "Bearer dk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       }

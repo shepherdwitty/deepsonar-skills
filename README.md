@@ -1,7 +1,7 @@
 # DeepSonar Skills 官方开源技能库
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![DeepSonar MCP](https://img.shields.io/badge/DeepSonar-MCP%20v2.0-0284c7.svg)](https://deepsonar.help)
+[![DeepSonar MCP](https://img.shields.io/badge/DeepSonar-MCP%20v2.0-0284c7.svg)](https://ds.solohub.art)
 
 DeepSonar（深纳）是面向电商平台（当前落地抖音电商）的专业规则风控归因系统。本仓库是 **DeepSonar 官方 Agent Skills 开源集合**，为各类主流 AI 编程助手与 Agent（Antigravity、Claude Code、Cursor、Gemini CLI 等）提供标准化、高精度的垂直领域内容风控与归因能力。
 
@@ -45,7 +45,7 @@ git clone https://github.com/shepherdwitty/deepsonar-skills.git .agents/skills/d
 
 ## ⚡ 配套 DeepSonar MCP 服务
 
-本技能库深度联动 **DeepSonar 开放规则库 MCP 服务**（`https://api.deepsonar.help/api/mcp`），提供 6 大原生 MCP 工具：
+本技能库深度联动 **DeepSonar 开放规则库 MCP 服务**（`https://dsapi.solohub.art/api/mcp`），提供 6 大原生 MCP 工具：
 
 - **4 大风控主力工具**：
   - `list_platforms` — 平台开放状态与分类字典
